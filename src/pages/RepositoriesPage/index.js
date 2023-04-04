@@ -3,6 +3,7 @@ import Filter from './Filter';
 import Profile from './Profile';
 import Repositories from './Repositories';
 import { Container, Sidebar, Main } from './styles';
+import { langColors } from '../../services/config';
 
 export default function RepositoriesPage() {
   const [currentLanguage, setCurrentLanguage] = useState();
@@ -59,16 +60,29 @@ export default function RepositoriesPage() {
       name: 'Repo 6',
       description: 'Descrição',
       html_url: 'https://github.com/betortiz/betortiz',
-      language: 'Java',
+      language: 'Python',
     },
   ];
 
-  const languages = [
-    { name: 'Javascript', count: 1, color: '#f1c40f' },
-    { name: 'C#', count: 1, color: '#27ae60' },
-    { name: 'PHP', count: 1, color: '#3498db' },
-    { name: 'Java', count: 1, color: '#9b59b6' },
-  ];
+  let stats = repositories
+    .map((repository) => repository.language)
+    .reduce(
+      (data, language) => ({
+        ...data,
+        [language]: (data[language] || 0) + 1,
+      }),
+      []
+    );
+
+  delete stats.null;
+
+  stats = Object.keys(stats)
+    .map((language) => ({
+      name: language,
+      count: stats[language],
+      color: langColors[language.toLowerCase()],
+    }))
+    .sort((a, b) => b.count - a.count);
 
   const onFilterClick = (language) => {
     setCurrentLanguage(language);
@@ -80,7 +94,7 @@ export default function RepositoriesPage() {
         <Sidebar>
           <Profile user={user} />
           <Filter
-            languages={languages}
+            languages={stats}
             currentLanguage={currentLanguage}
             onClick={onFilterClick}
           />
