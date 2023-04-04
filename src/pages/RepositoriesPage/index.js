@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Filter from './Filter';
 import Profile from './Profile';
 import Repositories from './Repositories';
 import { Container, Sidebar, Main } from './styles';
 
 export default function RepositoriesPage() {
+  const [currentLanguage, setCurrentLanguage] = useState();
+
   const user = {
     login: 'betortiz',
     name: 'Alberto Cabral Ortiz de Medeiros',
@@ -22,7 +24,7 @@ export default function RepositoriesPage() {
       name: 'Repo 1',
       description: 'Descrição',
       html_url: 'https://github.com/betortiz/betortiz',
-      language: 'JavaScript',
+      language: 'Javascript',
     },
     {
       id: '2',
@@ -43,14 +45,14 @@ export default function RepositoriesPage() {
       name: 'Repo 4',
       description: 'Descrição',
       html_url: 'https://github.com/betortiz/betortiz',
-      language: 'JavaScript',
+      language: 'Javascript',
     },
     {
       id: '5',
       name: 'Repo 5',
       description: 'Descrição',
       html_url: 'https://github.com/betortiz/betortiz',
-      language: 'Python',
+      language: 'PHP',
     },
     {
       id: '6',
@@ -62,21 +64,32 @@ export default function RepositoriesPage() {
   ];
 
   const languages = [
-    { name: 'Javascript', count: 4, color: '#f1c40f' },
-    { name: 'C#', count: 2, color: '#95a5a6' },
+    { name: 'Javascript', count: 1, color: '#f1c40f' },
+    { name: 'C#', count: 1, color: '#27ae60' },
     { name: 'PHP', count: 1, color: '#3498db' },
     { name: 'Java', count: 1, color: '#9b59b6' },
   ];
+
+  const onFilterClick = (language) => {
+    setCurrentLanguage(language);
+  };
 
   return (
     <>
       <Container>
         <Sidebar>
           <Profile user={user} />
-          <Filter languages={languages} />
+          <Filter
+            languages={languages}
+            currentLanguage={currentLanguage}
+            onClick={onFilterClick}
+          />
         </Sidebar>
         <Main>
-          <Repositories repositories={repositories} />
+          <Repositories
+            repositories={repositories}
+            currentLanguage={currentLanguage}
+          />
         </Main>
       </Container>
     </>
