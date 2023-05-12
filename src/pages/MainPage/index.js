@@ -21,7 +21,7 @@ const MainPage = () => {
           <MdSearch size={42} />
         </Button>
       </Form>
-      <footer>
+      <footer className="copyright">
         <div>&copy; 2023 Alberto Medeiros. Todos os direitos reservados.</div>
       </footer>
     </Container>

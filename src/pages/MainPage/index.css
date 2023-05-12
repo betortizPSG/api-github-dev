@@ -1,4 +1,4 @@
-footer {
+.copyright {
     display: flex;
     justify-content: first baseline;
     align-items: center;
