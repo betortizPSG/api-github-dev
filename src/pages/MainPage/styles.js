@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const Logo = styled.img`
   width: 130px;
+  margin-top: 10px;
 `;
 
 export const Title = styled.h1`

@@ -60,9 +60,6 @@ export default function RepositoriesPage() {
             currentLanguage={currentLanguage}
           />
         </Main>
-        <footer>
-          <div>&copy; 2023 Alberto Medeiros. Todos os direitos reservados.</div>
-        </footer>
       </Container>
     </>
   );
