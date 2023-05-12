@@ -47,7 +47,7 @@ export const Selector = styled.button`
 
 export const Cleaner = styled.button`
   background: transparent;
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.blue};
   border: none;
   text-align: left;
   padding: 1rem;

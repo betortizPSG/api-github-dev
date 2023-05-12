@@ -1,5 +1,7 @@
 import React from 'react';
+import './index.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Container, Selector, Cleaner } from './styles';
 
 const Filter = ({ languages, currentLanguage, onClick }) => {
@@ -20,6 +22,9 @@ const Filter = ({ languages, currentLanguage, onClick }) => {
       <Container>
         {selectors}
         <Cleaner onClick={() => onClick && onClick(undefined)}>Limpar</Cleaner>
+        <Link to="/repositories" className="voltar">
+          Voltar
+        </Link>
       </Container>
     </>
   );

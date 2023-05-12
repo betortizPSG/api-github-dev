@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint *.js **/*.js",
-    "json-server": "json-server db.json -p 5000"
+    "json-server": "json-server db.json --routes routes.json --id login -p 5000"
   },
   "eslintConfig": {
     "extends": "react-app"

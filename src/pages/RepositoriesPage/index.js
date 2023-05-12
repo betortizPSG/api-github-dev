@@ -1,92 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Filter from './Filter';
 import Profile from './Profile';
 import Repositories from './Repositories';
-import { Container, Sidebar, Main } from './styles';
-import { langColors } from '../../services/config';
+import { Loading, Container, Sidebar, Main } from './styles';
+import { getUser, getRepos, getLangsFrom } from '../../services/api';
 
 export default function RepositoriesPage() {
+  const { login } = useParams();
+
   const [currentLanguage, setCurrentLanguage] = useState();
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [repositories, setRepositories] = useState([]);
 
-  const user = {
-    login: 'betortiz',
-    name: 'Alberto Cabral Ortiz de Medeiros',
-    avatar_url: 'https://avatars.githubusercontent.com/u/66643506?v=4',
-    company: 'PSG Tecnologia',
-    location: 'Campo Grande - MS',
-    blog: null,
-    followers: 5,
-    following: 2,
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      const [userResponse, RepositoriesResponse] = await Promise.all([
+        getUser(login),
+        getRepos(login),
+      ]);
 
-  const repositories = [
-    {
-      id: '1',
-      name: 'Repo 1',
-      description: 'Descrição',
-      html_url: 'https://github.com/betortiz/betortiz',
-      language: 'Javascript',
-    },
-    {
-      id: '2',
-      name: 'Repo 2',
-      description: 'Descrição',
-      html_url: 'https://github.com/betortiz/betortiz',
-      language: 'C#',
-    },
-    {
-      id: '3',
-      name: 'Repo 3',
-      description: 'Descrição',
-      html_url: 'https://github.com/betortiz/betortiz',
-      language: 'PHP',
-    },
-    {
-      id: '4',
-      name: 'Repo 4',
-      description: 'Descrição',
-      html_url: 'https://github.com/betortiz/betortiz',
-      language: 'Javascript',
-    },
-    {
-      id: '5',
-      name: 'Repo 5',
-      description: 'Descrição',
-      html_url: 'https://github.com/betortiz/betortiz',
-      language: 'PHP',
-    },
-    {
-      id: '6',
-      name: 'Repo 6',
-      description: 'Descrição',
-      html_url: 'https://github.com/betortiz/betortiz',
-      language: 'Python',
-    },
-  ];
+      setRepositories(RepositoriesResponse.data);
+      setUser(userResponse.data);
+      setLoading(false);
+    };
 
-  let stats = repositories
-    .map((repository) => repository.language)
-    .reduce(
-      (data, language) => ({
-        ...data,
-        [language]: (data[language] || 0) + 1,
-      }),
-      []
-    );
+    loadData();
+  }, []);
 
-  delete stats.null;
-
-  stats = Object.keys(stats)
-    .map((language) => ({
-      name: language,
-      count: stats[language],
-      color: langColors[language.toLowerCase()],
-    }))
-    .sort((a, b) => b.count - a.count);
+  const languages = getLangsFrom(repositories);
 
   const onFilterClick = (language) => {
     setCurrentLanguage(language);
   };
+
+  if (loading) {
+    return (
+      <Loading>
+        <p>Loading...</p>
+      </Loading>
+    );
+  }
 
   return (
     <>
@@ -94,7 +49,7 @@ export default function RepositoriesPage() {
         <Sidebar>
           <Profile user={user} />
           <Filter
-            languages={stats}
+            languages={languages}
             currentLanguage={currentLanguage}
             onClick={onFilterClick}
           />
