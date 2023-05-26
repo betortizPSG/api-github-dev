@@ -2,7 +2,7 @@
   "name": "api-github-dev",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://github.com/betortizPSG/api-github-dev",
+  "homepage": "https://betortizPSG/github.io/api-github-dev",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
