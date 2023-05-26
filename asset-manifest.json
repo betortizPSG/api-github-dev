@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/betortizPSG/api-github-dev/static/css/main.3bd1c6ec.css",
+    "main.js": "/betortizPSG/api-github-dev/static/js/main.c8077942.js",
+    "static/media/github-logo.svg": "/betortizPSG/api-github-dev/static/media/github-logo.9fcacef27fcd0a77244f5ea7919ac450.svg",
+    "index.html": "/betortizPSG/api-github-dev/index.html",
+    "main.3bd1c6ec.css.map": "/betortizPSG/api-github-dev/static/css/main.3bd1c6ec.css.map",
+    "main.c8077942.js.map": "/betortizPSG/api-github-dev/static/js/main.c8077942.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3bd1c6ec.css",
+    "static/js/main.c8077942.js"
+  ]
+}
