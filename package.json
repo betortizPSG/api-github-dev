@@ -2,12 +2,15 @@
   "name": "api-github-dev",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://betortizPSG/github.io/api-github-dev",
+  "description": "A React project",
+  "main": "index.js",
+  "homepage": "https://github.com/betortizPSG/api-github-dev.git",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
+    "gh-pages": "^5.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,7 +56,6 @@
     "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^3.10.2",
-    "gh-pages": "^5.0.0",
     "json-server": "^0.16.3",
     "prettier": "^2.8.3"
   }
