@@ -1,5 +1,3 @@
 # GitHub Search
 
-<div aling="center">
-<img src"https://github.com/betortizPSG/api-github-dev/assets/117731405/e52b6ca8-a5cf-49d9-a0cd-07373842d9ed"
-</div>
+![search](https://github.com/betortizPSG/api-github-dev/assets/117731405/0ea9e551-6e2f-4821-a342-6694c615343f)
